@@ -692,7 +692,7 @@ public class ErP extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
         String mainfolder = "G:\\Share Company Wide\\Company Transfer\\ERP classificatie";
-        String productContent = "G:\\Product Content\\PRODUCTS\\";
+        String productContent = "X:\\Smartwares - Product Content\\PRODUCTS\\";
 
     private int findRow(XSSFSheet sheet, String item) {
         for (Row row : sheet) {
