@@ -691,8 +691,8 @@ public class ErP extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-        String mainfolder = "G:\\Share Company Wide\\Company Transfer\\ERP classificatie";
-        String productContent = "\\\\172.16.55.197\\design\\Smartwares - Product Content\\PRODUCTS\\";
+    String mainfolder = "\\\\file01\\SL-Data\\Share Company Wide\\Company Transfer\\ERP classificatie";
+    String productContent = "\\\\172.16.55.197\\design\\Smartwares - Product Content\\PRODUCTS\\";
 
     private int findRow(XSSFSheet sheet, String item) {
         for (Row row : sheet) {
@@ -707,15 +707,14 @@ public class ErP extends javax.swing.JFrame {
         return 0;
     }
 
-    private void label(String item, JFileChooser dest,List<String> noitem) throws IOException {
-        
+    private void label(String item, JFileChooser dest, List<String> noitem) throws IOException {
+
         String item1 = item.replace("/", "_");
         String subfolder = item1 + "\\";
-        if(oneFolderCheckBox.isSelected()){
+        if (oneFolderCheckBox.isSelected()) {
             subfolder = "";
         }
         File subdir = new File(dest.getSelectedFile() + "\\" + subfolder);
-
 
         File sources = new File(mainfolder + "\\ERP_Elements");
         String excelname = mainfolder + "\\ERP.xlsx";
@@ -908,11 +907,10 @@ public class ErP extends javax.swing.JFrame {
                     g.dispose();
 
                     // Save as new image
-
                     if (!subdir.exists()) {
                         subdir.mkdir();
                     }
-                    
+
                     ImageIO.write(combined, "PNG", output);
                     if (outPdfCheckBox.isSelected()) {
                         try {
@@ -975,20 +973,20 @@ public class ErP extends javax.swing.JFrame {
                 while (rowIterator.hasNext()) {
                     Row row = rowIterator.next();
                     Iterator<Cell> cellIterator = row.cellIterator();
-                    
+
                     Cell cell = cellIterator.next();
                     String item = cell.getStringCellValue();
-                    label(item, dest,noitem);
+                    label(item, dest, noitem);
                 }
                 if (noitem.size() > 0) {
-                JOptionPane.showMessageDialog(null, "Generator didn't find data for folowing items: " + noitem.toString());
+                    JOptionPane.showMessageDialog(null, "Generator didn't find data for folowing items: " + noitem.toString());
                 }
                 File subdir = new File(dest.getSelectedFile() + "\\");
                 Desktop desktop = Desktop.getDesktop();
                 desktop.open(subdir);
             } else {
                 String item = ItemTextField.getText().toUpperCase();
-                label(item, dest,noitem);
+                label(item, dest, noitem);
                 String item1 = item.replace("/", "_");
                 File subdir = new File(dest.getSelectedFile() + "\\" + item1 + "\\");
                 Desktop desktop = Desktop.getDesktop();
